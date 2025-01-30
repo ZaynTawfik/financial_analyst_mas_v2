@@ -1,1 +1,6 @@
 streamlit
+crewai
+pysqlite3-binary
+crewai_tools
+langchain_openai
+utils
