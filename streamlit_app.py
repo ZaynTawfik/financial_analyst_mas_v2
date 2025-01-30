@@ -16,6 +16,19 @@ warnings.filterwarnings('ignore')
 
 
 openai_api_key = st.text_input("OpenAI API Key", type="password")
+#openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+
+client = None  # Initialize client as None
+
+# Try to initialize OpenAI client with the provided key
+if openai_api_key:
+    try:
+        client = OpenAI(api_key=openai_api_key)
+    except AuthenticationError:
+        st.sidebar.error("Invalid OpenAI API Key. Please check your key or get a new one from the [OpenAI API Keys page](https://platform.openai.com/account/api-keys).")
+        client = None  # Ensure client remains None if there's an authentication error
+
+
 
 # Load API keys
 #openai_api_key = get_openai_api_key()
